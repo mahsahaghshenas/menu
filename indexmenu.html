@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="JQ/jquery-3.6.3.min.js"></script>
+    <title>menu</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+        main{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            transition: 1s;
+        }
+        .gray{
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75);
+            position: absolute;
+            display: none;
+            z-index: 999;
+        }
+        main>header{
+            width: 100%;
+            height: 150px;
+            float: left;
+        }
+        main>header>div:first-child{
+            width: 100%;
+            height: 50%;
+            border-top: 1px solid rgba(87, 87, 87, 0.368);
+            border-bottom: 1px solid rgba(87, 87, 87, 0.368);
+            float: left;
+        }
+        main>header>div:first-child>div:nth-child(1){
+            width: 15%;
+            height: 100%;
+            float: left;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            color: black;
+            text-align: center;
+            line-height: 75px;
+        }
+        main>header>div:first-child>div:nth-child(1) a{
+            text-decoration: none;
+            font-size: 18px;
+        }
+        main>header>div:first-child>div:nth-child(2){
+            width: 70%;
+            height: 100%;
+            float: left;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-align: center;
+            line-height: 75px;
+        }
+        main>header>div:first-child>div:nth-child(3){
+            width: 15%;
+            height: 100%;
+            float: left;
+        }
+        main>header>div:first-child>div:nth-child(3) i{
+            width: 15px;
+            height: 15px;
+            font-size: 20px;
+            float: left;
+            margin-right: 15px;
+            line-height: 75px;
+            transition: 0.3s;
+        }
+        main>header>div:first-child>div:nth-child(3) i:hover{
+            color:rgb(142, 0, 142) ;
+            transform: translateY(2px);
+        }
+
+
+
+        main>header>div:last-child{
+            width: 100%;
+            height: 50%;
+            position: relative;
+            float: left;
+        }
+        main>header>div:last-child>div:nth-child(1){
+            width: 15%;
+            height: 100%;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 20px;
+            text-align: center;
+            line-height: 75px;
+            border-right: 1px solid rgba(87, 87, 87, 0.368);
+            cursor: pointer;
+        }
+        main>header>div:last-child>div:nth-child(1):hover{
+            color: rgb(70, 0, 131);
+        }
+        main>header>div:last-child>div:nth-child(2),
+        main>header>div:last-child>div:nth-child(3){
+            width: 85%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        main>header>div:last-child>div:nth-child(2) i{
+            font-size: 25px;
+            float: left;
+            padding-left:30px;
+            line-height: 75px;
+            cursor: pointer;
+        }
+        main>header>div:last-child>div:nth-child(2) span:nth-of-type(1){
+            float: left;
+            font-size: 30px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-weight: bolder;
+            padding-left: 500px;
+            line-height: 75px;
+        }
+        main>header>div:last-child>div:nth-child(2) span:nth-of-type(2){
+            width: 15%;
+            height: 100%;
+            float: right;
+            padding-top: 30px;
+            text-align: center;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            background-color: darkblue;
+            color: white;
+            cursor: pointer;
+        }
+
+
+
+        main>header>div:last-child div:nth-child(3) input{
+            width: 95%;
+            height: 100%;
+            float: left;
+            border: none;
+            outline: none;
+        }
+        main>header>div:last-child div:nth-child(3) input::placeholder{
+            padding-left: 20px;
+        }
+        main>header>div:last-child div:nth-child(3) span{
+            width: 5%;
+            height: 100%;
+            background-color: #333;
+            font-size: 30px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            line-height: 75px;
+            float: right;
+            color: white;
+            display: block;
+            text-align: center;
+            cursor: pointer;
+        }
+        main>header>div:last-child div:nth-child(3){
+            display: none;
+        }
+        .trump{
+            width: 100%;
+            height: 90%;
+            background: url("img/coffee.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            float: left;
+        }
+        #nav{
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: -300px;
+            overflow-y: scroll;
+            /* transition: 0.3s; */
+        }
+        #nav>ul{
+            width: 100%;
+            height: 50px;
+            
+        }
+        #nav>ul>li{
+            line-height: 50px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            border-bottom: 1px solid rgb(92, 92, 92);
+            text-align: center;
+        }
+        #nav>ul>li:hover{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="gray"></div>
+        <header>
+            <div>
+                <div><a href="">English</a></div>
+                <div>Lorem ipsum dolor sit amet consectetu</div>
+                <div>
+                    <i class="fa fa-shield"></i>
+                    <i class="fa fa-shield"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+
+            <div>
+                <div onclick="menFunc()">                    
+                    <i class="fa fa-bars"> Menu</i>
+                </div>
+
+                <div>
+                    <i class="fa fa-search"></i>
+                    <span>W</span>
+                    <span>Submit</span>
+                </div>
+                <div>
+                    <input type="text" placeholder="Search in this box...">
+                    <span>
+                        <i class="fa fa-times"></i>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="trump"></div>
+    </main>
+    <nav id="nav">
+        <ul>
+            <li onclick="backFunc()"><i class="fa fa-times"></i></li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+            <li>Sample link</li>
+        </ul>
+    </nav>
+
+    <script>
+        $(function(){
+            $("main>header>div:last-child>div:nth-child(1)").click(function(){
+                $("main").css("transform", "translateX(300px)");
+                $("#nav").css("transform", "translateX(300px)");
+                $("main").children(".gray").delay(100).fadeIn(500);
+            });
+            $("#nav>ul>li:first-child , .gray").click(function(){
+                $("main").css("transform", "translateX(0)");
+                $("#nav").css("transform", "translateX(-300px)");
+                $("main").children(".gray").fadeOut(500);
+            });
+        });
+
+        $("main>header>div:last-child>div:nth-child(2) i").click(function(){
+            $("main>header>div:last-child>div:nth-child(3)").fadeIn(500);
+        });
+        $("main>header>div:last-child div:nth-child(3) span").click(function(){
+            $("main>header>div:last-child>div:nth-child(3)").fadeOut(500);
+        });
+
+
+    </script>
+
+
+    <!-- <script>
+        function subFunc(){
+            document.querySelector("main>header>div:last-child div:nth-child(3)").style.display = "block";
+        }
+        function xFunc(){
+            document.querySelector("main>header>div:last-child div:nth-child(3)").style.display = "none";
+        }
+        function menFunc(){
+            document.getElementById("nav").style.left="0";
+        }
+        function backFunc(){
+            document.getElementById("nav").style.left="-300px";
+        }
+    </script> -->
+
+
+
+</body>
+</html>
